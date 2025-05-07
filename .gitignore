@@ -1,0 +1,13 @@
+# Python
+hotel-booker/env/
+__pycache__/
+*.pyc
+*.sqlite3
+
+# Node.js
+hotel-booker-frontend/node_modules/
+dist/
+
+# Otros
+.DS_Store
+.env
