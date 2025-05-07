@@ -4,6 +4,7 @@ services:
     env: python
     repo: https://github.com/tu-usuario/hotel-booker-fullstack
     branch: main
+    rootDir: hotel-booker
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn backend.wsgi:application
     envVars:
@@ -11,7 +12,7 @@ services:
         value: backend.settings
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: SECRET_KEY
+      - key: kgn21-$2$-j*0&ox!5^!xy9=%0-+zk8aen7ogjjs0*drmu267e
         value: change-me-later
       - key: DEBUG
         value: False
