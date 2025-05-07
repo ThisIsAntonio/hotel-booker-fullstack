@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-(9*8szmy!$t4221bq81+6#1n0dz@%%$5)!=&t(3g5r3ov7m&@r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'thisisantonio.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -133,4 +137,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
+}
+
+SIMPLE_JWT = {
+    'TOKEN_OBTAIN_SERIALIZER': 'reservations.token_claims.CustomTokenObtainPairSerializer',
 }
