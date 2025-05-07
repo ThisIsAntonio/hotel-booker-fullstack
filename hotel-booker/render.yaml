@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: hotel-booker-backend
+    env: python
+    repo: https://github.com/ThisIsAntonio/hotel-booker-fullstack
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: backend.settings
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        value: kgn21-$2$-j*0&ox!5^!xy9=%0-+zk8aen7ogjjs0*drmu267e
+      - key: DEBUG
+        value: False
