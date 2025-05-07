@@ -10,7 +10,7 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: backend.settings
       - key: PYTHON_VERSION
-        value: 3.10
+        value: 3.11.0
       - key: SECRET_KEY
         value: change-me-later
       - key: DEBUG
