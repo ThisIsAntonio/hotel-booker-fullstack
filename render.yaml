@@ -2,7 +2,7 @@ services:
   - type: web
     name: hotel-booker-backend
     env: python
-    repo: https://github.com/tu-usuario/hotel-booker-fullstack
+    repo: https://github.com/ThisIsAntonio/hotel-booker-fullstack
     branch: main
     rootDir: hotel-booker
     buildCommand: pip install -r requirements.txt
@@ -12,7 +12,7 @@ services:
         value: backend.settings
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: kgn21-$2$-j*0&ox!5^!xy9=%0-+zk8aen7ogjjs0*drmu267e
-        value: change-me-later
+      - key: SECRET_KEY
+        value: kgn21-$2$-j*0&ox!5^!xy9=%0-+zk8aen7ogjjs0*drmu267e
       - key: DEBUG
         value: False
