@@ -20,7 +20,7 @@ This project includes secure login, full CRUD for reservations, responsive UI wi
 - 🔎 Search reservations by name, room, phone or email
 - ⚙️ Protected routes using Angular guards
 - 📱 Responsive Bootstrap interface
-- 🌍 Deployed on Firebase & PythonAnywhere
+<!-- - 🌍 Deployed on Firebase & PythonAnywhere -->
 
 ---
 
