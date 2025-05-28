@@ -1,0 +1,111 @@
+<div class="text-end">
+  <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+</div>
+<div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+<div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+
+
+<div class="container mt-4">
+  <h2>Make a Reservation</h2>
+  <form #reservationForm="ngForm" (ngSubmit)="createReservation()" class="mb-4" novalidate>
+
+    <!-- Guest Name -->
+    <div class="mb-3">
+      <label>Guest Name:</label>
+      <input class="form-control" [(ngModel)]="form.guest_name" name="guest_name" required #guestName="ngModel">
+      <div *ngIf="guestName.invalid && guestName.touched" class="text-danger">
+        Guest name is required.
+      </div>
+    </div>
+
+    <!-- Email, Phone, Room -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label>Email:</label>
+        <input class="form-control" [(ngModel)]="form.email" name="email" type="email">
+      </div>
+      <div class="col-md-4">
+        <label>Phone:</label>
+        <input class="form-control" [(ngModel)]="form.phone" name="phone" type="tel">
+      </div>
+      <div class="col-md-4">
+        <label>Room Number:</label>
+        <select class="form-control" [(ngModel)]="form.room_number" name="room_number" required>
+          <option [ngValue]="null" disabled>Select a room</option>
+          <option *ngFor="let room of roomOptions" [ngValue]="room">{{ room }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dates -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Check-in Date:</label>
+        <input class="form-control" [(ngModel)]="form.check_in" name="check_in" type="date" required #checkIn="ngModel">
+        <div *ngIf="checkIn.invalid && checkIn.touched" class="text-danger">
+          Check-in date is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Check-out Date:</label>
+        <input class="form-control" [(ngModel)]="form.check_out" name="check_out" type="date" required #checkOut="ngModel">
+        <div *ngIf="checkOut.invalid && checkOut.touched" class="text-danger">
+          Check-out date is required.
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isDateInvalid()" class="text-danger mb-3">
+      Check-out date must be after check-in date.
+    </div>
+
+    <!-- Buttons -->
+    <button class="btn btn-primary me-2" [disabled]="reservationForm.invalid || isDateInvalid()">
+      {{ editingId ? 'Update Reservation' : 'Create Reservation' }}
+    </button>
+    <button *ngIf="editingId" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+  </form>
+
+
+  <hr>
+  <br />
+  <div class="mb-4">
+    <input
+      class="form-control"
+      placeholder="Search by name, email, phone, or room..."
+      [(ngModel)]="searchTerm"
+      name="search"
+    />
+  </div>
+  <br />
+
+  <h3>Existing Reservations</h3>
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-4 mb-3" *ngFor="let r of filteredReservations()">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ r.guest_name }}</h5>
+          <p class="card-text">
+            <strong>Email:</strong> {{ r.email || 'N/A' }}<br>
+            <strong>Phone:</strong> {{ r.phone || 'N/A' }}
+          </p>
+          <h6 class="card-subtitle mb-2 text-muted">Room {{ r.room_number }}</h6>
+          <p class="card-text">
+            <strong>Check-in:</strong> {{ r.check_in }}<br>
+            <strong>Check-out:</strong> {{ r.check_out }}
+          </p>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="editReservation(r)">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteReservation(r.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
