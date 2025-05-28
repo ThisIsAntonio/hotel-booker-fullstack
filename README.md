@@ -73,9 +73,13 @@ ng serve
 ```
 
 📡 Live Demo
-🔗 Frontend: https://hotel-booker-frontend2.web.app
+
+🚧 Demo temporarily disabled while updating deployment.
+<!--
+🔗 Frontend: https://hotel-booker-frontend2.web.app 
 
 🔗 Backend: https://thisisantonio.pythonanywhere.com
+-->
 
 ## 👨‍💻 About Me
 
