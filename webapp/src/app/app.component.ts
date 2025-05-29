@@ -12,6 +12,7 @@ import { ReservationListComponent } from './components/reservation-list/reservat
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  title = 'hotel-booker-frontend';
   constructor(public auth: AuthService) {}
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('access_token');
