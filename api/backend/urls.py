@@ -24,8 +24,10 @@ from rest_framework_simplejwt.views import (
 )
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def create_admin(request):
     User = get_user_model()
     if not User.objects.filter(username="admin").exists():
