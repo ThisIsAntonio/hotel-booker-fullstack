@@ -84,6 +84,7 @@ ng serve
 
 **Marcos Astudillo**  
 Full Stack Developer | Python · Django · Angular · Railway · Render
+
 📫 Email: [m.astudillo1986@gmail.com](mailto:m.astudillo1986@gmail.com)  
 🌐 GitHub: [@ThisIsAntonio](https://github.com/ThisIsAntonio)  
 🔗 LinkedIn: [Marcos Antonio Astudillo Carrasco](https://www.linkedin.com/in/marcos-antonio-astudillo-carrasco/)
