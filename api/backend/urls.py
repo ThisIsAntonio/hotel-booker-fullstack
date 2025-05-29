@@ -25,11 +25,15 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def create_admin(request):
-    User = get_user_model()
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser("admin", "admin@example.com", "admin123")
-        return JsonResponse({"status": "Superusuario creado"})
-    return JsonResponse({"status": "El superusuario ya existe"})
+    try:
+        User = get_user_model()
+        if not User.objects.filter(username="admin").exists():
+            User.objects.create_superuser(
+                "admin", "admin@example.com", "admin123")
+            return JsonResponse({"status": "Superusuario creado"})
+        return JsonResponse({"status": "El superusuario ya existe"})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
