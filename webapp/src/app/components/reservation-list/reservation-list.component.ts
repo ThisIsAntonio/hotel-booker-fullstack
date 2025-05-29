@@ -68,7 +68,7 @@ export class ReservationListComponent implements OnInit {
 
   isDateInvalid(): boolean {
     if (!this.form.check_in || !this.form.check_out) {
-      return false; // aún no hay fechas, no es "inválido" todavía
+      return false; 
     }
 
     const checkIn = new Date(this.form.check_in);

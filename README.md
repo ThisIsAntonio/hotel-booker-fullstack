@@ -74,10 +74,10 @@ ng serve
 
 📡 Live Demo
 
-🚧 Demo temporarily disabled while updating deployment.
-<!--
-🔗 Frontend: https://hotel-booker-frontend2.web.app 
--->
+<!--🚧 Demo temporarily disabled while updating deployment.-->
+
+🔗 Frontend: https://hotel-booker-fullstack.onrender.com/
+
 🔗 Backend: https://hotel-booker-backend-production.up.railway.app/api
 
 ## 👨‍💻 About Me

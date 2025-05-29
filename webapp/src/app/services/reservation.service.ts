@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reservation } from '../models/reservation';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservationService {
-  private baseUrl = 'https://thisisantonio.pythonanywhere.com/api/reservations/';;
+  private baseUrl = `${environment.apiUrl}/reservations/`;
   private token = '';
 
   constructor(private http: HttpClient) {}
@@ -21,8 +22,8 @@ export class ReservationService {
     return token
       ? {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       : {};
   }
@@ -40,7 +41,10 @@ export class ReservationService {
   }
 
   updateReservation(id: number, data: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.baseUrl}${id}/`, data, this.authHeaders());
+    return this.http.put<Reservation>(
+      `${this.baseUrl}${id}/`,
+      data,
+      this.authHeaders()
+    );
   }
-
 }
