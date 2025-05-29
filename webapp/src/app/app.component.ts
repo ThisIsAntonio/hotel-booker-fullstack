@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
-import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +13,14 @@ import { ReservationListComponent } from './components/reservation-list/reservat
 })
 export class AppComponent {
   title = 'hotel-booker-frontend';
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private router: Router) {}
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('access_token');
   }
 
   logout(): void {
     localStorage.removeItem('access_token');
-    window.location.href = '/login';
+    this.router.navigate(['/']);
   }
 }
 

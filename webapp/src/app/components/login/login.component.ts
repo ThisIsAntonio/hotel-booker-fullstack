@@ -25,7 +25,7 @@ export class LoginComponent {
       password: this.password
     }).subscribe({
       next: data => {
-        console.log('✅ Login response received:', data);
+        //console.log('✅ Login response received:', data);
         if (data && data.access) {
           localStorage.setItem('access_token', data.access);
           this.router.navigate(['/reservations']);
