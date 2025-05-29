@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.core.management import call_command
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.contrib.auth import get_user_model
 
 @csrf_exempt
 def run_migrations(request):
@@ -38,7 +39,23 @@ def collect_static(request):
         return JsonResponse({"status": "Static files collected"})
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-    
+
+@csrf_exempt
+def create_admin(request):
+    try:
+        User = get_user_model()
+        if not User.objects.filter(username="admin").exists():
+            User.objects.create_superuser(
+                username="admin",
+                email="admin@example.com",
+                password="admin123"
+            )
+            return JsonResponse({"status": "Superusuario creado con éxito"})
+        else:
+            return JsonResponse({"status": "El superusuario ya existe"})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('reservations.urls')),
@@ -46,4 +63,5 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('run-migrations/', run_migrations),
     path('collect-static/', collect_static),
+    path('create-admin/', create_admin),
 ]
