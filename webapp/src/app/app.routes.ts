@@ -4,7 +4,7 @@ import { ReservationListComponent } from './components/reservation-list/reservat
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'reservations', component: ReservationListComponent, canActivate: [authGuard] }
 ];
