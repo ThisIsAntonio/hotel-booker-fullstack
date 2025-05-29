@@ -28,8 +28,13 @@ export class LoginComponent {
       .subscribe({
         next: (data) => {
           console.log('Login response:', data);
-          localStorage.setItem('access_token', data.access);
-          this.router.navigate(['/reservations']);
+          if (data && data.access) {
+            localStorage.setItem('access_token', data.access);
+            this.router.navigate(['/reservations']);
+          } else {
+            this.error = 'Login failed: Invalid response from server.';
+            console.error('Invalid login response:', data);
+          }
         },
         error: (err) => {
           this.error = 'Invalid credentials';
