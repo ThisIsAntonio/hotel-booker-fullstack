@@ -7,6 +7,7 @@ __pycache__/
 # Node.js
 hotel-booker-frontend/node_modules/
 dist/
+!dist/hotel-booker-frontend/static.json
 
 # Otros
 .DS_Store
