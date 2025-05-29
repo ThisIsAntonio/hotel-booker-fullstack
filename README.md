@@ -2,8 +2,8 @@
 
 ![Django](https://img.shields.io/badge/Django-5.2-green?logo=django)
 ![Angular](https://img.shields.io/badge/Angular-17-red?logo=angular)
-![Firebase](https://img.shields.io/badge/Firebase-Hosting-yellow?logo=firebase)
-![PythonAnywhere](https://img.shields.io/badge/Backend-PythonAnywhere-blue?logo=python)
+![Render](https://img.shields.io/badge/Frontend-Render-blue?logo=render)
+![Railway](https://img.shields.io/badge/Backend-Railway-black?logo=railway)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange?logo=jsonwebtokens)
 
 
@@ -20,7 +20,7 @@ This project includes secure login, full CRUD for reservations, responsive UI wi
 - 🔎 Search reservations by name, room, phone or email
 - ⚙️ Protected routes using Angular guards
 - 📱 Responsive Bootstrap interface
-<!-- - 🌍 Deployed on Firebase & PythonAnywhere -->
+- 🌍 Deployed on Render (Frontend) & railway (API)
 
 ---
 
@@ -60,14 +60,14 @@ This project includes secure login, full CRUD for reservations, responsive UI wi
 
 ```bash
 # Backend
-cd hotel-booker
+cd api
 python -m venv env
 env\Scripts\activate
 pip install -r requirements.txt
 python manage.py runserver
 
 # Frontend
-cd hotel-booker-frontend
+cd webapp
 npm install
 ng serve
 ```
@@ -83,7 +83,7 @@ ng serve
 ## 👨‍💻 About Me
 
 **Marcos Astudillo**  
-Full Stack Developer | Python · Django · Angular · Firebase  
+Full Stack Developer | Python · Django · Angular · Railway · Render
 📫 Email: [m.astudillo1986@gmail.com](mailto:m.astudillo1986@gmail.com)  
 🌐 GitHub: [@ThisIsAntonio](https://github.com/ThisIsAntonio)  
 🔗 LinkedIn: [Marcos Antonio Astudillo Carrasco](https://www.linkedin.com/in/marcos-antonio-astudillo-carrasco/)
