@@ -78,7 +78,7 @@ ng serve
 <!--
 🔗 Frontend: https://hotel-booker-frontend2.web.app 
 -->
-🔗 Backend: https://hotel-booker-backend-production.up.railway.app
+🔗 Backend: https://hotel-booker-backend-production.up.railway.app/api
 
 ## 👨‍💻 About Me
 
