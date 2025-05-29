@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'thisisantonio.pythonanywhere.com',
     'localhost',
     '127.0.0.1',
+    'hotel-booker-backend-production.up.railway.app',
 ]
 
 
