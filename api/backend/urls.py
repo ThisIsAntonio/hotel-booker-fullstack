@@ -18,36 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from django.http import JsonResponse
-from django.contrib.auth import get_user_model
-from django.views.decorators.csrf import csrf_exempt
-from django.core.management import call_command
-
-@csrf_exempt
-def run_migrations(request):
-    try:
-        call_command('migrate')
-        return JsonResponse({"status": "Migraciones aplicadas con éxito"})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
-
-@csrf_exempt
-def create_admin(request):
-    try:
-        User = get_user_model()
-        if not User.objects.filter(username="admin").exists():
-            User.objects.create_superuser(
-                "admin", "admin@example.com", "admin123")
-            return JsonResponse({"status": "Superusuario creado"})
-        return JsonResponse({"status": "El superusuario ya existe"})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('reservations.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('create-admin/', create_admin),
-    path('run-migrations/', run_migrations),
 ]
