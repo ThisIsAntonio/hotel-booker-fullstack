@@ -77,9 +77,8 @@ ng serve
 🚧 Demo temporarily disabled while updating deployment.
 <!--
 🔗 Frontend: https://hotel-booker-frontend2.web.app 
-
-🔗 Backend: https://thisisantonio.pythonanywhere.com
 -->
+🔗 Backend: https://hotel-booker-backend-production.up.railway.app
 
 ## 👨‍💻 About Me
 
