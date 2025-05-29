@@ -1,0 +1,1 @@
+web: cd api && python -m gunicorn backend.wsgi:application
