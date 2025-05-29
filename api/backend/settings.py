@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(9*8szmy!$t4221bq81+6#1n0dz@%%$5)!=&t(3g5r3ov7m&@r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'thisisantonio.pythonanywhere.com',
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://hotel-booker-backend-production.up.railway.app"
+    'https://hotel-booker-backend-production.up.railway.app',
 ]
 
 # Application definition
