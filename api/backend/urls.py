@@ -22,12 +22,21 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.contrib.auth import get_user_model
 
+
+def create_admin(request):
+    User = get_user_model()
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser("admin", "admin@example.com", "admin123")
+        return JsonResponse({"status": "Superusuario creado"})
+    return JsonResponse({"status": "El superusuario ya existe"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('reservations.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('create-admin/', create_admin),
 ]
