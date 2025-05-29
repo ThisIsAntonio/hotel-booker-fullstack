@@ -18,9 +18,32 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+from django.core.management import call_command
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
+@csrf_exempt
+def run_migrations(request):
+    try:
+        call_command('migrate')
+        return JsonResponse({"status": "Migraciones aplicadas con éxito"})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+
+@csrf_exempt
+def collect_static(request):
+    try:
+        call_command('collectstatic', '--noinput')
+        return JsonResponse({"status": "Static files collected"})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('reservations.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('run-migrations/', run_migrations),
+    path('collect-static/', collect_static),
 ]
