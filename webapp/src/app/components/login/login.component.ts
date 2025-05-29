@@ -20,27 +20,24 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    this.http
-      .post<any>('${environment.apiUrl}/token/', {
-        username: this.username,
-        password: this.password,
-      })
-      .subscribe({
-        next: (data) => {
-          console.log('Login response:', data);
-          if (data && data.access) {
-            localStorage.setItem('access_token', data.access);
-            this.router.navigate(['/reservations']);
-          } else {
-            this.error = 'Login failed: Invalid response from server.';
-            console.error('Invalid login response:', data);
-          }
-        },
-        error: (err) => {
-          this.error = 'Invalid credentials';
-          console.error('Login error:', err);
-        },
-      });
+    this.http.post<any>(`${environment.apiUrl}/token/`, {
+      username: this.username,
+      password: this.password
+    }).subscribe({
+      next: data => {
+        console.log('✅ Login response received:', data);
+        if (data && data.access) {
+          localStorage.setItem('access_token', data.access);
+          this.router.navigate(['/reservations']);
+        } else {
+          this.error = 'Login failed: Invalid response';
+          console.error('❌ Invalid login response structure:', data);
+        }
+      },
+      error: err => {
+        this.error = 'Invalid credentials';
+        console.error('❌ Login error from backend:', err);
+      }
+    });
   }
-
 }
